@@ -4,83 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="script.js" defer></script>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+        }
+        html{          
+              min-height: 100%;
+        }
+        body{
+            min-height: 100vh;
+        }
+        .container{
+            background-color: rgb(46, 67, 67);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        justify-content: space-between;
+    }
 
+            .container .heading{
+                align-self: center;
+        display: flex;
+    align-items: center;
+font-size: 90px; }
+
+.container div{
+    align-self: center;
+    font-size: 30px;
+
+}
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    justify-content: space-around ;
+
+}
+.header div.round{
+    font-size: 70px;
+}
+
+            
+        .humanChoice{
+            display:flex;
+            justify-content: space-around ;
+       flex: 10;
+       align-items: center;
+       width: 80%;
+        }
+        button{
+            width:200px;
+            height:100px;
+            font-size: 30px;
+            font-weight: 1000;
+            background-color: rgb(171, 171, 171);
+            border-radius: 10px;
+
+}
+    </style>
 </head>
 <body>
-    <script>
-       let array=["Rock","Paper","Scissor"];
-       let arrayComp=[/rock-paper/i,/paper-scissor/i,/scissor-rock/i];
-let humanScore=0;
-let computerScore=0;
+    <div class="container">
+       <div class="header"><h1 class="heading">Playing Arena!</h1>
+        <div class="round">Round: 1</div></div> 
+        <div class="humanChoice">
+            <button id="rock">ROCK</button>
+            <button id="paper"> PAPER</button>
+            <button id="scissor">SCISSOR</button>
+        </div>
 
-       function getComputerChoice(){
-        return array[Math.floor(Math.random()*3)];
-       }
-       function getHumanChoice(i){
-        let value=prompt(`Round ${i} \nWhat is your choice`);
-        let array1=[];
-        for(let i=0;i<3;i++){
-array1[i]=new RegExp(array[i],"i");
-}
-if(value){
-        if(value.match(array1[0]) || value.match(array1[1]) || value.match(array1[2]))
-    return value;
-else {
-     alert("please type valid input");
-    getHumanChoice(i);
-}}
-else 
-return;
- }
-  function gameRound(i){
-    let comp=getComputerChoice();
-    let var1=getHumanChoice(i)
-    let hum=new RegExp(var1,"i");
-    if(!var1)
-    return null;
-    console.log(hum,comp);
-
-if(comp.match(hum)){
-    alert("Same choice, play again");
-    console.log(i)
-  return 0;
-}
-hum=hum.source;
-let finalREsult=getResult(comp,hum);
-if(comp.match(finalREsult)){
-
-    computerScore++;
-}
-else {
-humanScore++;
-}}
-function startGame(){
-  for(i=1;i<6;i++){
-
-    if(!gameRound(i));
-    return;
-}
-alert(`The human scored: ${humanScore} and The computer scored: ${computerScore} \nThe final winner is ${winner()}`);
-}
-startGame();
-  function getResult(comp, hum) {
-    console.log(`Comparing ${comp} and ${hum}`);
-    if (arrayComp[0].test(`${comp}-${hum}`) || arrayComp[0].test(`${hum}-${comp}`)) {
-        return /paper/i
-    } else if (arrayComp[1].test(`${comp}-${hum}`) || arrayComp[1].test(`${hum}-${comp}`)) {
-        return /scissor/i;
-    } else if (arrayComp[2].test(`${comp}-${hum}`) || arrayComp[2].test(`${hum}-${comp}`)) {
-        return /rock/i;
-    } else {
-        return "Invalid input";
-    }
-}
-function winner(){
-    if(humanScore>computerScore)
-    return "Human"
-else
-return "computer";
-}
-    </script>
+    </div>
 </body>
 </html>
